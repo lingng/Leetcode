@@ -9,6 +9,10 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+
+        # Dynamic Programming.
+        # For each house, has two choices: take the money, do not take the money. 
+        # SUM[i] = MAX(SUM[i-2]+NUM[i], SUM[i-1])
         n = len(nums)
         if n == 0:
             return 0
