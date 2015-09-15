@@ -1,4 +1,6 @@
 class Solution(object):
+
+
     def permuteUnique(self, nums):
         """
         :type nums: List[int]
@@ -8,13 +10,13 @@ class Solution(object):
             return []
         if len(nums) == 1:
             return [nums]
+        nums.sort()
         result = []
-        for i in range(0, len(nums)):
-            for j in self.permuteUnique(nums[:i]+nums[i+1:]):
-                # print [nums[i]]+j
-                result.append([nums[i]]+j)
+        previousNum = None
+        for i in range(len(nums)):
+            if nums[i] == previousNum: 
+                continue
+            previousNum = nums[i]
+            for j in self.permuteUnique(nums[:i] + nums[i+1:]):
+                result.append([nums[i]] + j)
         return result
-
-# Cannot AC in Online Judge.
-x = Solution()
-print x.permuteUnique([0,3,2,1,1,1])
