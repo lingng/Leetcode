@@ -17,6 +17,7 @@ class Solution(object):
         a2 = b[::-1]
         n1 = len(a1)
         n2 = len(a2)
+        # Reverse two numbers. add 0 if their lengths are not equal
         if n1 != n2:
             if n1 > n2:
                 for i in range(n2, n1):
@@ -26,6 +27,7 @@ class Solution(object):
                     a1 = a1+"0"
         rst = ""
         carrier = 0
+        # calculate the result by digits.
         for i in range(0, len(a1)):
             tmp1 = int(a1[i])
             tmp2 = int(a2[i])
@@ -39,7 +41,9 @@ class Solution(object):
             else:
                 rst = rst + str(answer)
                 carrier = 0
+        # check if we need to add an extra digit for the carrier.
         if carrier == 1:
             rst = rst + "1"
+        # reverse the string back and return
         rst = rst[::-1]
         return rst
