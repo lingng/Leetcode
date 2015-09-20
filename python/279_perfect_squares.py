@@ -14,6 +14,7 @@ class Solution(object):
         """
         dp = self._dp
         while len(dp) <= n:
+            # dp[-i*i]  : count from back to front.
             dp += min(dp[-i*i] for i in range(1, int(len(dp)**0.5+1))) + 1,
         return dp[n]
 
@@ -38,7 +39,7 @@ class Solution(object):
                     dp[x + y * y] = dp[x] + 1
                 y += 1
         return dp[n]
-        
+
 # Greedy won't work.
 # Eg, n = 12. Correct answer: 3. Greedy: 9 + 2 + 1 + 1 -> 4.
 
