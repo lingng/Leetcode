@@ -7,7 +7,7 @@
 # You may assume k is always valid, 1 ≤ k ≤ array's length.
 
 class Solution(object):
-    # An easy AC way. But not a good solution.
+    # An easy AC way. O(n log n).
     def findKthLargest(self, nums, k):
         """
         :type nums: List[int]
@@ -18,4 +18,26 @@ class Solution(object):
         nums.sort()
         n = len(nums)
         return nums[n-k]
+
+    # O(n) solution. 
+    # Ref: http://www.cs.yale.edu/homes/aspnes/pinewiki/QuickSelect.html
+    def findKthLargest_1(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: int
+        """
+        import random
+        pivot = random.choice(nums)
+        nums1, nums2 = [], []
+        for num in nums:
+            if num > pivot:
+                nums1.append(num)
+            elif num < pivot:
+                nums2.append(num)
+        if k <= len(nums1):
+            return self.findKthLargest(nums1, k)
+        if k > len(nums) - len(nums2):
+            return self.findKthLargest(nums2, k - (len(nums) - len(nums2)))
+        return pivot
         
