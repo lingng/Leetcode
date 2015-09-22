@@ -19,7 +19,7 @@ class Solution(object):
         n = len(nums)
         return nums[n-k]
 
-    # O(n) solution. 
+    # O(n) solution. Similar to quick sort. * worst time complexity: O(n^2)
     # Ref: http://www.cs.yale.edu/homes/aspnes/pinewiki/QuickSelect.html
     def findKthLargest_1(self, nums, k):
         """
@@ -41,3 +41,18 @@ class Solution(object):
             return self.findKthLargest(nums2, k - (len(nums) - len(nums2)))
         return pivot
         
+    # O(n log k) solution.
+    # Use a minimum heap. Since minimum, push and pop the negative of the current number.
+    def findKthLargest_2(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: int
+        """
+        heap = []
+        res = 0
+        for i in nums:
+            heapq.heappush(heap, -i)
+        for j in range(k):
+            res = -heapq.heappop(heap)
+        return res
