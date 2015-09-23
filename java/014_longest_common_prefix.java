@@ -10,6 +10,7 @@ public class Solution {
         int shortest_idx = 0;
         int shortest_len = Integer.MAX_VALUE;
         for (int i = 0; i < strs.length; i++){
+            // The length of a string is using .length() rather than .length
             if (strs[i].length() < shortest_len){
                 shortest_len = strs[i].length();
                 shortest_idx = i;
@@ -18,6 +19,7 @@ public class Solution {
         String prefix = "";
         for (int i = 0; i < shortest_len; i++){
             String s = strs[shortest_idx];
+            // Need to use charAt to get the ith character in a string.
             char c = s.charAt(i);
             boolean flag = true;
             for (int j = 0; j < strs.length; j++){
