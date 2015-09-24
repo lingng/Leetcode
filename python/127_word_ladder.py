@@ -41,3 +41,30 @@ class Solution(object):
                             queue.append((newWord, dist+1))
                             visited.add(newWord)
         return 0
+
+    def ladderLength_1(self, beginWord, endWord, wordList):
+        """
+        :type beginWord: str
+        :type endWord: str
+        :type wordList: Set[str]
+        :rtype: int
+        """
+        wordList.add(endWord)
+        q = []
+        q.append((beginWord, 0))
+        while q:
+            curr = q.pop(0)
+            currlen = curr[1]
+            currword = curr[0]
+            if currword == endWord:
+                return currlen+1
+            for i in range(len(beginWord)):
+                part1 = currword[:i]
+                part2 = currword[i+1:]
+                for j in "abcdefghijiklmnopqrstuvwxyz":
+                    if currword[i] != j:
+                        nextword = part1+j+part2
+                        if nextword in wordList:
+                            q.append((nextword, currlen+1))
+                            wordList.remove(nextword)
+        return 0
