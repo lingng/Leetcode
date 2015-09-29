@@ -13,6 +13,11 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+
+        # Idea similar to bucket sort:
+        # Sort the array to fix the nums[i] = i+1 format.
+        # If the destination position already has the fixed number, then return the number. 
+        # This should be the duplicate number.
         for i in range(0, len(nums)):
             if nums[i] == i+1:
                 continue
