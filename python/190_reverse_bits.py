@@ -19,6 +19,12 @@ class Solution(object):
         while len(rst)<32:
           rst = rst + "0"
         print rst
+        
+        # https://wiki.python.org/moin/BitManipulation
+
+        # >>> print int('00100001', 2)
+        # 33
+
         return int(rst, 2)
         
 x = Solution()
