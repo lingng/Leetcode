@@ -28,4 +28,4 @@ class Solution(object):
         return int(rst, 2)
         
 x = Solution()
-print x.reverseBits(1)
+print x.reverseBits(6)  
