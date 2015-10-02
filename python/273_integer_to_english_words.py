@@ -1,3 +1,11 @@
+# https://leetcode.com/problems/integer-to-english-words/
+
+# Convert a non-negative integer to its english words representation. Given input is guaranteed to be less than 231 - 1.
+# For example,
+# 123 -> "One Hundred Twenty Three"
+# 12345 -> "Twelve Thousand Three Hundred Forty Five"
+# 1234567 -> "One Million Two Hundred Thirty Four Thousand Five Hundred Sixty Seven"
+
 class Solution(object):
     def numberToWords(self, num):
         """
@@ -20,7 +28,6 @@ class Solution(object):
                 tmprst = trst + " " + self.Units(t)
             else:
                 tmprst = ""
-            print tmprst
             if tmprst != "":
                 if rst != "":
                     rst = tmprst + " " + rst
@@ -29,6 +36,9 @@ class Solution(object):
             num = num/1000
         return rst
 
+    # Chunk the number by 3 digits.
+    # Chunk the three-digit number by hundred, and rest.
+    
     def castNum(self, num):
         if num == 0:
             return ""
