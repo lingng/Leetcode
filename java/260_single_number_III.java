@@ -26,4 +26,34 @@ public class Solution {
         }
         return result;
     }
+
+    public int[] singleNumber_1(int[] nums) {
+    int xor = 0;
+    // get the overall xor result. The numbers that come in pairs will results in a 0.
+    for(int e:nums) {
+        xor ^= e;
+    }
+    
+    // xor will be the xor result of the two single numbers.
+    // Since these numbers are different, there must be a bit, that the xor result will be 1 rather than 0.
+    // Use mask and mask <<= 1 to find that bit with a 1.
+
+    int mask = 1;
+    while((mask & xor) == 0)
+        mask <<= 1;
+    
+    // Separate all numbers into two group, those are 1 on that bit, and those are 0 on that bit.
+    // Since other numbers come in pairs, thus the xor result will be zero.
+    // By this way, we can get the two single numbers.
+    int a = 0, b = 0;
+    for(int e:nums) {
+        if((mask & e) == 0) {
+            a ^= e;
+        } else {
+            b ^= e;
+        }
+    }
+    
+    return new int[]{a, b};
+}
 }
