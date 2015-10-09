@@ -5,7 +5,7 @@ class Solution(object):
         :type str: str
         :rtype: bool
         """
-        if len(pattern) != len(str.split(" ")):
+        if len(pattern) != len(string.split(" ")):
             return False
         if len(pattern) == 0 or len(pattern) == 1:
             return True
