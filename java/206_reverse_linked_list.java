@@ -29,4 +29,15 @@ public class Solution {
         }
         return result;
     }
+
+    public ListNode reverseListRecur(ListNode head) {
+        if (head == null || (head != null && head.next == null)){
+            return head;
+        }
+        ListNode after = head.next;
+        head.next = null;
+        ListNode rev = reverseListRecur(after);
+        after.next = head;
+        return rev;
+    }
 }
