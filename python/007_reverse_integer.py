@@ -19,6 +19,8 @@ class Solution:
             result = result * 10 + mod
         if (Negativeflag == True):
             result = 0 - result
+        if result > 2147483647 or result < -2147483648:
+            return 0
         return result
         
         
