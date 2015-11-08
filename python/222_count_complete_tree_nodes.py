@@ -23,7 +23,8 @@ class Solution(object):
         left = self.countLeft(root) + 1
         right = self.countRight(root) + 1
         if left == right:
-            return (2<<(left-1)) - 1
+            # return (2<<(left-1)) - 1
+            return (2**left)-1
         else:
             return 1+self.countNodes(root.left)+self.countNodes(root.right)
             
