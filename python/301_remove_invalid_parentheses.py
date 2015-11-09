@@ -43,21 +43,21 @@ class Solution(object):
         :type s: str
         :rtype: List[str]
         """
-        stack = self.checkValid(s)
-        if len(stack) == 0:
+        queue = self.checkValid(s)
+        if len(queue) == 0:
             return [s]
         result = []
         visited = set([s])   
         p = 0
-        self.dfs(s, stack, p, result, visited)
+        self.dfs(s, queue, p, result, visited)
         return result
 
 
-    def dfs(self, s, stack, p, result, visited):
+    def dfs(self, s, queue, p, result, visited):
         for i in range(0, len(s)):
-            if p >= len(stack):
+            if p >= len(queue):
                 return
-            if s[i] == stack[p]:
+            if s[i] == queue[p]:
                 substr = s[:i]+s[i+1:]
                 if substr not in visited:
                     visited.add(substr)
@@ -65,10 +65,10 @@ class Solution(object):
                     if len(tmp) == 0:
                         if substr not in result:
                             result.append(substr)
-                    elif len(tmp) > len(stack):
+                    elif len(tmp) > len(queue):
                         continue
                     else:
-                        self.dfs(substr, stack, p+1, result, visited)
+                        self.dfs(substr, queue, p+1, result, visited)
 
         
     def checkValid(self, s):
