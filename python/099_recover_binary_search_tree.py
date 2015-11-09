@@ -35,3 +35,18 @@ class Solution(object):
             listnode.append(root)
             self.inorder(root.right, list, listnode)
             
+    def recoverTree1(self, root):
+        self.n1 = self.n2 = None
+        self.prev = None
+        self.FindTwoNodes(root)
+        self.n1.val, self.n2.val = self.n2.val, self.n1.val
+
+    def FindTwoNodes(self, root):
+        if root:
+            self.FindTwoNodes(root.left)
+            if self.prev and self.prev.val > root.val:
+                self.n2 = root
+                if self.n1 == None:
+                    self.n1 = self.prev
+            self.prev = root
+            self.FindTwoNodes(root.right)
