@@ -19,6 +19,7 @@ class Solution(object):
         :rtype: int
         """
         tokens = self.toRPN(s)
+        print tokens
         return self.evalRPN(tokens)
 
     operators = ['+', '-', '*', '/']
@@ -74,3 +75,7 @@ class Solution(object):
             '*' : 2,
             '/' : 2,
         }.get(operator, 0)
+
+
+x = Solution()
+x.calculate('(1+3)-(4+5*6)')
